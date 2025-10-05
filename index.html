@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sduy - Portfolio</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0a0a0a;
+            color: #d1d1d1;
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth; /* Enable smooth scrolling */
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease-in-out;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            75% { transform: translateY(-5px); }
+        }
+
+        .animate-fade {
+            animation: fadeIn 1.2s ease-out forwards;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #000;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.6);
+            transition: background-color 0.4s ease-in-out;
+        }
+
+        header:hover {
+            background-color: #111;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #00bfff;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .logo:hover {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            font-size: 18px;
+            position: relative;
+            transition: color 0.4s ease-in-out;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -6px;
+            left: 0;
+            background-color: #00bfff;
+            transition: width 0.4s ease-in-out;
+        }
+
+        nav ul li a:hover {
+            color: #00bfff;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .resume-btn {
+            background-color: #00bfff;
+            color: #000;
+            padding: 12px 24px;
+            border-radius: 25px;
+            margin-left: 30px;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .resume-btn:hover {
+            background-color: #009acd;
+            transform: scale(1.15) translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 191, 255, 0.5);
+        }
+
+        /* Hero section */
+        .hero {
+            text-align: center;
+            padding: 150px 20px;
+            background: linear-gradient(to bottom, #000, #111);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0,191,255,0.1) 0%, rgba(0,0,0,0) 70%);
+            animation: pulse 6s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.3); opacity: 0.3; }
+            100% { transform: scale(1); opacity: 0.6; }
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin-bottom: 30px;
+            border: 5px solid #00bfff;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .profile-img:hover {
+            border-color: #fff;
+            transform: rotate(360deg) scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 191, 255, 0.7);
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            color: #00bfff;
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px rgba(0,191,255,0.6);
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+
+        .hero h2 {
+            font-size: 28px;
+            color: #fff;
+            margin-bottom: 15px;
+            animation: fadeIn 1.5s ease-out 0.3s forwards;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 18px;
+            animation: fadeIn 1.5s ease-out 0.6s forwards;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .primary-btn {
+            background-color: #00bfff;
+            color: #000;
+            margin-right: 15px;
+        }
+
+        .primary-btn:hover {
+            background-color: #009acd;
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(0,191,255,0.8);
+        }
+
+        .secondary-btn {
+            background-color: #333;
+            color: #fff;
+            border: 2px solid #00bfff;
+        }
+
+        .secondary-btn:hover {
+            background-color: #00bfff;
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(0,191,255,0.8);
+        }
+
+        /* About section */
+        .about {
+            text-align: center;
+            padding: 80px 20px;
+            background-color: #111;
+            position: relative;
+        }
+
+        .about h1 {
+            font-size: 50px;
+            color: #00bfff;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeIn 1.2s ease-out 0.5s forwards;
+        }
+
+        .about p {
+            max-width: 900px;
+            margin: 0 auto 40px;
+            font-size: 18px;
+            opacity: 0;
+            animation: fadeIn 1.2s ease-out 0.8s forwards;
+        }
+
+        .skills {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .skill-tag {
+            background-color: #222;
+            color: #00bfff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin: 10px;
+            font-size: 16px;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,191,255,0.4);
+        }
+
+        /* Projects section */
+        .projects {
+            text-align: center;
+            padding: 80px 20px;
+            background-color: #0a0a0a;
+        }
+
+        .projects h1 {
+            font-size: 50px;
+            color: #00bfff;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 1.2s ease-out forwards;
+        }
+
+        .projects p {
+            max-width: 900px;
+            margin: 0 auto 40px;
+            font-size: 18px;
+            opacity: 0;
+            animation: fadeIn 1.2s ease-out 0.5s forwards;
+        }
+
+        .categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .category-btn {
+            background-color: #222;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin: 5px;
+            cursor: pointer;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .category-btn.active,
+        .category-btn:hover {
+            background-color: #00bfff;
+            color: #000;
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 0 15px rgba(0,191,255,0.6);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background-color: #1a1a1a;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: left;
+            transition: all 0.5s ease-in-out;
+            opacity: 0;
+            animation: fadeIn 1.2s ease-out forwards;
+            animation-delay: calc(0.3s * var(--order));
+        }
+
+        .project-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 12px 25px rgba(0,191,255,0.3);
+        }
+
+        .project-icon {
+            width: 100%;
+            height: 200px;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            font-size: 60px;
+            color: #00bfff;
+            transition: background-color 0.4s ease-in-out;
+        }
+
+        .project-card:hover .project-icon {
+            background-color: #444;
+            transform: scale(1.05);
+        }
+
+        .project-card h3 {
+            color: #fff;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .project-card p {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background-color: #333;
+            color: #00bfff;
+            padding: 6px 12px;
+            border-radius: 20px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            font-size: 14px;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .tag:hover {
+            background-color: #00bfff;
+            color: #000;
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        /* Contact section */
+        .contact {
+            text-align: center;
+            padding: 80px 20px;
+            background-color: #111;
+        }
+
+        .contact h1 {
+            font-size: 50px;
+            color: #00bfff;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeIn 1.2s ease-out 0.5s forwards;
+        }
+
+        .contact p {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-size: 18px;
+            opacity: 0;
+            animation: fadeIn 1.2s ease-out 0.8s forwards;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: #222;
+            border: 1px solid #333;
+            border-radius: 5px;
+            color: #d1d1d1;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #00bfff;
+            transform: scale(1.02);
+            box-shadow: 0 0 10px rgba(0,191,255,0.4);
+        }
+
+        .submit-btn {
+            background-color: #00bfff;
+            color: #000;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .submit-btn:hover {
+            background-color: #009acd;
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 0 20px rgba(0,191,255,0.8);
+        }
+
+        /* Contact Information */
+        .contact-info {
+            max-width: 400px;
+            margin: 40px auto;
+            text-align: left;
+        }
+
+        .contact-info h2 {
+            font-size: 24px;
+            color: #00bfff;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 1.2s ease-out 1s forwards;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            transition: all 0.5s ease-in-out;
+            animation: slideIn 1s ease-out forwards;
+        }
+
+        .contact-item:nth-child(1) { animation-delay: 1.2s; }
+        .contact-item:nth-child(2) { animation-delay: 1.4s; }
+        .contact-item:nth-child(3) { animation-delay: 1.6s; }
+        .contact-item:nth-child(4) { animation-delay: 1.8s; }
+        .contact-item:nth-child(5) { animation-delay: 2s; }
+
+        .contact-item:hover {
+            transform: translateX(15px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,191,255,0.4);
+            animation: bounce 0.6s ease-in-out;
+        }
+
+        .contact-item i {
+            font-size: 24px;
+            color: #00bfff;
+            margin-right: 15px;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .contact-item:hover i {
+            transform: rotate(15deg) scale(1.2);
+        }
+
+        .contact-item a,
+        .contact-item span {
+            color: #d1d1d1;
+            font-size: 16px;
+            transition: color 0.4s ease-in-out;
+        }
+
+        .contact-item a:hover,
+        .contact-item span:hover {
+            color: #00bfff;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: #000;
+            border-top: 1px solid #333;
+        }
+
+        footer h3 {
+            color: #00bfff;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .social-icon {
+            background-color: #222;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 15px;
+            color: #fff;
+            font-size: 24px;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .social-icon:hover {
+            background-color: #00bfff;
+            color: #000;
+            transform: rotate(360deg) scale(1.2);
+            box-shadow: 0 0 15px rgba(0,191,255,0.6);
+        }
+
+        .copyright {
+            font-size: 14px;
+            color: #888;
+        }
+
+        .heart {
+            color: red;
+            animation: beat 1.2s infinite ease-in-out;
+        }
+
+        @keyframes beat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Sduy</div>
+        <nav>
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#" class="resume-btn">Resume</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+ <section class="hero" id="hero">
+    <img src="images/avatar.jpg" alt="Profile Picture" class="profile-img">
+    <h1>Nguyễn Sơn Duy</h1>
+    <h2>Data Engineering Student</h2>
+    <p>
+        Ngày sinh: 11/11/2005<br>
+        MSSV: 23133012<br>
+        Ngành học: Kỹ thuật dữ liệu<br>
+        Mục tiêu: Data Engineering<br>
+        Email: sonduy135@gmail.com
+    </p>
+    <button class="btn primary-btn">View My Work</button>
+    <button class="btn secondary-btn">Get In Touch</button>
+</section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h1>About Me</h1>
+        <p>I'm a dedicated Data Engineering student with a passion for solving complex problems through technology. When I'm not building data solutions, you'll find me helping students master mathematics or working on innovative projects that bridge the gap between data and real-world applications. My journey in tech started with a fascination for how data can drive decisions, and I've since honed my skills in various tools and frameworks.</p>
+        <div class="skills">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Apache Spark</span>
+            <span class="skill-tag">Kafka</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">TensorFlow</span>
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Machine Learning</span>
+            <span class="skill-tag">Data Pipelines</span>
+            <span class="skill-tag">IoT</span>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+<!-- Projects Section -->
+<section class="projects" id="projects">
+    <h1>My Projects</h1>
+    <p>A collection of projects showcasing my expertise in web development using HTML, CSS, and JavaScript. Each project demonstrates my ability to build interactive and user-friendly applications.</p>
+    <div class="categories">
+        <button class="category-btn active" data-category="all">All</button>
+        <button class="category-btn" data-category="full-stack">Full Stack</button>
+        <button class="category-btn" data-category="survey">Survey</button>
+        <button class="category-btn" data-category="management">Management</button>
+    </div>
+    <div class="project-grid">
+        <div class="project-card" data-category="management" style="--order:1">
+            <div class="project-icon">💻</div>
+            <h3>Ứng dụng Odoo</h3>
+            <p>Ứng dụng quản lý doanh nghiệp với giao diện thân thiện, xây dựng bằng HTML, CSS và JavaScript.</p>
+            <div class="tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Management</span>
+            </div>
+            <a href="https://sduy.odoo.com/" target="_blank" class="project-link">Xem dự án</a>
+        </div>
+        <div class="project-card" data-category="management" style="--order:2">
+            <div class="project-icon">📧</div>
+            <h3>Danh sách Email</h3>
+            <p>Ứng dụng quản lý danh sách email với giao diện tương tác, sử dụng JavaScript để xử lý dữ liệu.</p>
+            <div class="tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Management</span>
+            </div>
+            <a href="https://emaillist-vqft.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
+        </div>
+        <div class="project-card" data-category="survey" style="--order:3">
+            <div class="project-icon">📊</div>
+            <h3>Khảo sát Chương 4</h3>
+            <p>Ứng dụng khảo sát trực tuyến với giao diện động, sử dụng JavaScript để xử lý biểu mẫu.</p>
+            <div class="tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Survey</span>
+            </div>
+            <a href="https://ch04-ex1-survey.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
+        </div>
+        <div class="project-card" data-category="survey" style="--order:4">
+            <div class="project-icon">📋</div>
+            <h3>Khảo sát Tuần 2</h3>
+            <p>Ứng dụng khảo sát web với các tính năng tương tác, sử dụng CSS để thiết kế giao diện.</p>
+            <div class="tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Survey</span>
+            </div>
+            <a href="https://web-survery-week2.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
+        </div>
+        <div class="project-card" data-category="survey" style="--order:5">
+            <div class="project-icon">📈</div>
+            <h3>Khảo sát Chương 6</h3>
+            <p>Bài tập khảo sát chương 6, tập trung vào xử lý dữ liệu khảo sát với JavaScript.</p>
+            <div class="tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Survey</span>
+            </div>
+            <a href="https://ch6-ex.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
+        </div>
+        <div class="project-card" data-category="survey" style="--order:6">
+            <div class="project-icon">📉</div>
+            <h3>Khảo sát Chương 6 (Phần 2)</h3>
+            <p>Phần tiếp theo của khảo sát chương 6, mở rộng với các tính năng tương tác nâng cao.</p>
+            <div class="tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Survey</span>
+            </div>
+            <a href="https://ch6-2dg5.onrender.com/survey" target="_blank" class="project-link">Xem dự án</a>
+        </div>
+        <div class="project-card" data-category="full-stack" style="--order:7">
+            <div class="project-icon">💻</div>
+            <h3>Bài tập Chương 7</h3>
+            <p>Ứng dụng web thuộc chương 7, sử dụng JavaScript để xử lý giao diện và tương tác.</p>
+            <div class="tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Full Stack</span>
+            </div>
+            <a href="https://ch7-ex-012.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
+        </div>
+        <div class="project-card" data-category="full-stack" style="--order:8">
+            <div class="project-icon">💻</div>
+            <h3>Bài tập Chương 7 (Phần 1)</h3>
+            <p>Phần 1 của bài tập chương 7, xây dựng giao diện web với HTML, CSS và JavaScript.</p>
+            <div class="tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Full Stack</span>
+            </div>
+            <a href="https://ch07-ex1-012.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
+        </div>
+        <div class="project-card" data-category="full-stack" style="--order:9">
+            <div class="project-icon">📊</div>
+            <h3>Bài tập Chương 8</h3>
+            <p>Dự án thuộc chương 8, tập trung vào xử lý dữ liệu và giao diện động với JavaScript.</p>
+            <div class="tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Full Stack</span>
+            </div>
+            <a href="https://ch08-ex1-012.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
+        </div>
+        <div class="project-card" data-category="full-stack" style="--order:10">
+            <div class="project-icon">📈</div>
+            <h3>Bài tập Chương 9</h3>
+            <p>Dự án thuộc chương 9, xây dựng ứng dụng web với giao diện và tính năng tương tác.</p>
+            <div class="tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Full Stack</span>
+            </div>
+            <a href="https://ch09-ex1-dow012.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
+        </div>
+        <div class="project-card" data-category="full-stack" style="--order:11">
+            <div class="project-icon">🛒</div>
+            <h3>Giỏ hàng Chương 9</h3>
+            <p>Ứng dụng giỏ hàng trực tuyến với các tính năng quản lý sản phẩm, sử dụng JavaScript.</p>
+            <div class="tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Full Stack</span>
+            </div>
+            <a href="https://ch09-ex2-cart-dxi6.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
+        </div>
+    </div>
+</section>
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h1>Contact Me</h1>
+        <p>Feel free to reach out for collaboration, questions, or just to say hello! I'm always open to new opportunities and love connecting with people in the tech community. Let's build something amazing together!</p>
+        <div class="contact-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+        </div>
+        <!-- Contact Information -->
+        <div class="contact-info">
+            <h2>Contact Information</h2>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>sduy@example.com</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>+1 (555) 123-4567</span>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-linkedin"></i>
+                <a href="https://linkedin.com/in/sduy" target="_blank">linkedin.com/in/sduy</a>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-github"></i>
+                <a href="https://github.com/sduy" target="_blank">github.com/sduy</a>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>San Francisco, CA</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <h3>Sduy</h3>
+        <p>Data Engineering Student & Freelancer</p>
+        <div class="social-icons">
+            <a href="https://github.com/sdy1125" class="social-icon" target="_blank">🐱</a>
+            <a href="https://linkedin.com/in/sduy" class="social-icon" target="_blank">in</a>
+            <a href="mailto:sonduy135@gmail.com" class="social-icon">✉️</a>
+        </div>
+        <div class="copyright">© 2025 Sduy. Made with <span class="heart">❤️</span> and lots of coffee.</div>
+    </footer>
+
+    <!-- Font Awesome for icons (CDN) -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
