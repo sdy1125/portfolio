@@ -18,7 +18,7 @@
             color: #d1d1d1;
             line-height: 1.6;
             overflow-x: hidden;
-            scroll-behavior: smooth; /* Enable smooth scrolling */
+            scroll-behavior: smooth;
         }
 
         a {
@@ -40,8 +40,8 @@
 
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-            75% { transform: translateY(-5px); }
+            50% { transform: translateY(-12px); }
+            75% { transform: translateY(-6px); }
         }
 
         .animate-fade {
@@ -206,7 +206,7 @@
 
         .primary-btn:hover {
             background-color: #009acd;
-            transform: translateY(-3px);
+            transform: translateY(-3px) scale(1.05);
             box-shadow: 0 0 20px rgba(0,191,255,0.8);
         }
 
@@ -219,7 +219,7 @@
         .secondary-btn:hover {
             background-color: #00bfff;
             color: #000;
-            transform: translateY(-3px);
+            transform: translateY(-3px) scale(1.05);
             box-shadow: 0 0 20px rgba(0,191,255,0.8);
         }
 
@@ -345,19 +345,14 @@
         .project-icon {
             width: 100%;
             height: 200px;
-            background-color: #333;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background-size: cover;
+            background-position: center;
             margin-bottom: 20px;
             border-radius: 10px;
-            font-size: 60px;
-            color: #00bfff;
-            transition: background-color 0.4s ease-in-out;
+            transition: transform 0.4s ease-in-out;
         }
 
         .project-card:hover .project-icon {
-            background-color: #444;
             transform: scale(1.05);
         }
 
@@ -392,6 +387,21 @@
             background-color: #00bfff;
             color: #000;
             transform: translateY(-5px) scale(1.1);
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #00bfff;
+            color: #000;
+            border-radius: 20px;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .project-link:hover {
+            background-color: #009acd;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 191, 255, 0.6);
         }
 
         /* Contact section */
@@ -576,6 +586,16 @@
             box-shadow: 0 0 15px rgba(0,191,255,0.6);
         }
 
+        .social-icon img {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .social-icon:hover img {
+            transform: scale(1.2);
+        }
+
         .copyright {
             font-size: 14px;
             color: #888;
@@ -591,7 +611,40 @@
             50% { transform: scale(1.3); }
             100% { transform: scale(1); }
         }
-        
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                margin-top: 20px;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .hero {
+                padding: 100px 20px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero h2 {
+                font-size: 20px;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -611,25 +664,27 @@
     </header>
 
     <!-- Hero Section -->
- <section class="hero" id="hero">
-    <img src="images/avatar.jpg" alt="Profile Picture" class="profile-img">
-    <h1>Nguyễn Sơn Duy</h1>
-    <h2>Data Engineering Student</h2>
-    <p>
-        Ngày sinh: 11/11/2005<br>
-        MSSV: 23133012<br>
-        Ngành học: Kỹ thuật dữ liệu<br>
-        Mục tiêu: Data Engineering<br>
-        Email: sonduy135@gmail.com
-    </p>
-    <button class="btn primary-btn">View My Work</button>
-    <button class="btn secondary-btn">Get In Touch</button>
-</section>
+    <section class="hero" id="hero">
+        <img src="images/avatar.jpg" alt="Profile Picture" class="profile-img">
+
+        <h1>Nguyễn Sơn Duy</h1>
+        <h2>Data Engineering Student</h2>
+        <p>
+            Ngày sinh: 11/11/2005<br>
+            MSSV: 23133012<br>
+            Ngành học: Kỹ thuật dữ liệu<br>
+            Mục tiêu: Data Engineering<br>
+            Email: sonduy135@gmail.com<br>
+            Last updated: 07:21 PM +07, Sunday, October 05, 2025
+        </p>
+        <button class="btn primary-btn" onclick="scrollToSection('projects')">View Work</button>
+        <button class="btn secondary-btn" onclick="scrollToSection('contact')">Get In Touch</button>
+    </section>
 
     <!-- About Section -->
     <section class="about" id="about">
         <h1>About Me</h1>
-        <p>I'm a dedicated Data Engineering student with a passion for solving complex problems through technology. When I'm not building data solutions, you'll find me helping students master mathematics or working on innovative projects that bridge the gap between data and real-world applications. My journey in tech started with a fascination for how data can drive decisions, and I've since honed my skills in various tools and frameworks.</p>
+        <p>Xin chào! Mình là Sơn Duy, sinh viên ngành Kỹ thuật Dữ liệu tại Trường Đại học Sư phạm Kỹ thuật TP. Hồ Chí Minh (HCMUTE). Hiện tại, mình đang học môn Lập trình Web, nơi mình được tìm hiểu cách xây dựng và triển khai các ứng dụng web hiện đại. Mình đam mê việc biến dữ liệu thô thành những thông tin có giá trị và tạo ra các giải pháp giúp dữ liệu được sử dụng hiệu quả hơn. Bên cạnh việc học, mình thích tham gia các dự án kết hợp giữa sáng tạo và công nghệ, với mục tiêu trở thành một kỹ sư dữ liệu hiểu sâu về cả dữ liệu lẫn hệ thống web.</p>
         <div class="skills">
             <span class="skill-tag">Python</span>
             <span class="skill-tag">Apache Spark</span>
@@ -647,187 +702,187 @@
     </section>
 
     <!-- Projects Section -->
-<!-- Projects Section -->
-<section class="projects" id="projects">
-    <h1>My Projects</h1>
-    <p>A collection of projects showcasing my expertise in web development using HTML, CSS, and JavaScript. Each project demonstrates my ability to build interactive and user-friendly applications.</p>
-    <div class="categories">
-        <button class="category-btn active" data-category="all">All</button>
-        <button class="category-btn" data-category="full-stack">Full Stack</button>
-        <button class="category-btn" data-category="survey">Survey</button>
-        <button class="category-btn" data-category="management">Management</button>
-    </div>
-    <div class="project-grid">
-        <div class="project-card" data-category="management" style="--order:1">
-            <div class="project-icon"><i class="fas fa-briefcase"></i></div>
-            <h3>ch04-ex1</h3>
-            <p>Ứng dụng khảo sát trực tuyến với giao diện động, sử dụng JavaScript để xử lý biểu mẫu.</p>
-            <div class="tags">
-                <span class="tag">HTML</span>
-                <span class="tag">CSS</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">Survey</span>
-            </div>
-            <a href="https://ch04-ex1-survey.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
+    <section class="projects" id="projects">
+        <h1>My Projects</h1>
+        <p>Đây là một số dự án bài tập của môn lập trình web trong lĩnh vực phát triển web bằng HTML, CSS và JavaScript. Mỗi dự án đều chứng minh khả năng xây dựng các ứng dụng tương tác và thân thiện với người dùng của tôi.</p>
+        <div class="categories">
+            <button class="category-btn active" data-category="all">All</button>
+            <button class="category-btn" data-category="full-stack">Full Stack</button>
+            <button class="category-btn" data-category="survey">Survey</button>
+            <button class="category-btn" data-category="management">Management</button>
         </div>
-        <div class="project-card" data-category="management" style="--order:2">
-            <div class="project-icon"><i class="fas fa-envelope-open"></i></div>
-            <h3>ch06-ex</h3>
-            <p>Bài tập khảo sát chương 6, tập trung vào xử lý dữ liệu khảo sát với JavaScript.</p>
-            <div class="tags">
-                <span class="tag">HTML</span>
-                <span class="tag">CSS</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">Survey</span>
+        <div class="project-grid">
+            <div class="project-card" data-category="management" style="--order:1">
+                <div class="project-icon" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                <h3>ch04-ex1</h3>
+                <p>Ứng dụng khảo sát trực tuyến với giao diện động, sử dụng JavaScript để xử lý biểu mẫu.</p>
+                <div class="tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Survey</span>
+                </div>
+                <a href="https://ch04-ex1-survey.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
             </div>
-            <a href="https://ch6-ex.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
-        </div>
-        <div class="project-card" data-category="management" style="--order:3">
-            <div class="project-icon"><i class="fas fa-envelope-open"></i></div>
-            <h3>ch06-2dg5</h3>
-            <p>Phần tiếp theo của khảo sát chương 6, mở rộng với các tính năng tương tác nâng cao.</p>
-            <div class="tags">
-                <span class="tag">HTML</span>
-                <span class="tag">CSS</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">Survey</span>
+            <div class="project-card" data-category="management" style="--order:2">
+                <div class="project-icon" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                <h3>ch06-ex</h3>
+                <p># Join our email list: To join our email list, enter your name and email address below.</p>
+                <div class="tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Survey</span>
+                </div>
+                <a href="https://ch6-ex.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
             </div>
-            <a href="https://ch6-2dg5.onrender.com/survey" target="_blank" class="project-link">Xem dự án</a>
-        </div>
-        <div class="project-card" data-category="management" style="--order:4">
-            <div class="project-icon"><i class="fas fa-briefcase"></i></div>
-            <h3>sduy</h3>
-            <p>Ứng dụng quản lý doanh nghiệp với giao diện thân thiện, xây dựng bằng HTML, CSS và JavaScript.</p>
-            <div class="tags">
-                <span class="tag">HTML</span>
-                <span class="tag">CSS</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">Management</span>
+            <div class="project-card" data-category="management" style="--order:3">
+                <div class="project-icon" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                <h3>ch06-2dg5</h3>
+                <p>Phần tiếp theo của khảo sát chương 6, mở rộng với các tính năng tương tác nâng cao.</p>
+                <div class="tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Survey</span>
+                </div>
+                <a href="https://ch6-2dg5.onrender.com/survey" target="_blank" class="project-link">Xem dự án</a>
             </div>
-            <a href="https://sduy.odoo.com/" target="_blank" class="project-link">Xem dự án</a>
-        </div>
-        <div class="project-card" data-category="management" style="--order:5">
-            <div class="project-icon"><i class="fas fa-envelope-open"></i></div>
-            <h3>emaillist-vqft</h3>
-            <p>Ứng dụng quản lý danh sách email với giao diện tương tác, sử dụng JavaScript để xử lý dữ liệu.</p>
-            <div class="tags">
-                <span class="tag">HTML</span>
-                <span class="tag">CSS</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">Management</span>
+            <div class="project-card" data-category="management" style="--order:4">
+                <div class="project-icon" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                <h3>sduy</h3>
+                <p># Users: First Name, Last Name, Email, Email, Email, Refresh.</p>
+                <div class="tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Management</span>
+                </div>
+                <a href="https://sduy.odoo.com/" target="_blank" class="project-link">Xem dự án</a>
             </div>
-            <a href="https://emaillist-vqft.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
-        </div>
-        <div class="project-card" data-category="survey" style="--order:6">
-            <div class="project-icon"><i class="fas fa-clipboard-list"></i></div>
-            <h3>web-survery-week2</h3>
-            <p>Ứng dụng khảo sát web với các tính năng tương tác, sử dụng CSS để thiết kế giao diện.</p>
-            <div class="tags">
-                <span class="tag">HTML</span>
-                <span class="tag">CSS</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">Survey</span>
+            <div class="project-card" data-category="management" style="--order:5">
+                <div class="project-icon" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                <h3>emaillist-vqft</h3>
+                <p>Ứng dụng quản lý danh sách email, cho phép người dùng đăng ký và hủy đăng ký nhận thông tin.</p>
+                <div class="tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Management</span>
+                </div>
+                <a href="https://emaillist-vqft.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
             </div>
-            <a href="https://web-survery-week2.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
-        </div>
-        <div class="project-card" data-category="full-stack" style="--order:7">
-            <div class="project-icon"><i class="fas fa-laptop-code"></i></div>
-            <h3>ch07-ex-012</h3>
-            <p>Ứng dụng web thuộc chương 7, sử dụng JavaScript để xử lý giao diện và tương tác.</p>
-            <div class="tags">
-                <span class="tag">HTML</span>
-                <span class="tag">CSS</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">Full Stack</span>
+            <div class="project-card" data-category="survey" style="--order:6">
+                <div class="project-icon" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                <h3>web-survery-week2</h3>
+                <p>Ứng dụng khảo sát web với các tính năng tương tác, sử dụng CSS để thiết kế giao diện.</p>
+                <div class="tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Survey</span>
+                </div>
+                <a href="https://web-survery-week2.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
             </div>
-            <a href="https://ch7-ex-012.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
-        </div>
-        <div class="project-card" data-category="full-stack" style="--order:8">
-            <div class="project-icon"><i class="fas fa-laptop-code"></i></div>
-            <h3>ch07-ex1-012</h3>
-            <p>Phần 1 của bài tập chương 7, xây dựng giao diện web với HTML, CSS và JavaScript.</p>
-            <div class="tags">
-                <span class="tag">HTML</span>
-                <span class="tag">CSS</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">Full Stack</span>
+            <div class="project-card" data-category="full-stack" style="--order:7">
+                <div class="project-icon" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                <h3>ch07-ex-012</h3>
+                <p>Ứng dụng web thuộc chương 7, sử dụng JavaScript để xử lý giao diện và tương tác.</p>
+                <div class="tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Full Stack</span>
+                </div>
+                <a href="https://ch7-ex-012.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
             </div>
-            <a href="https://ch07-ex1-012.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
-        </div>
-        <div class="project-card" data-category="full-stack" style="--order:9">
-            <div class="project-icon"><i class="fas fa-chart-bar"></i></div>
-            <h3>ch08-ex1-012</h3>
-            <p>Dự án thuộc chương 8, tập trung vào xử lý dữ liệu và giao diện động với JavaScript.</p>
-            <div class="tags">
-                <span class="tag">HTML</span>
-                <span class="tag">CSS</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">Full Stack</span>
+            <div class="project-card" data-category="full-stack" style="--order:8">
+                <div class="project-icon" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                <h3>ch07-ex1-012</h3>
+                <p>Phần 1 của bài tập chương 7, xây dựng giao diện web với HTML, CSS và JavaScript.</p>
+                <div class="tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Full Stack</span>
+                </div>
+                <a href="https://ch07-ex1-012.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
             </div>
-            <a href="https://ch08-ex1-012.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
-        </div>
-        <div class="project-card" data-category="full-stack" style="--order:10">
-            <div class="project-icon"><i class="fas fa-chart-line"></i></div>
-            <h3>ch09-ex1-dow012</h3>
-            <p>Dự án thuộc chương 9, xây dựng ứng dụng web với giao diện và tính năng tương tác.</p>
-            <div class="tags">
-                <span class="tag">HTML</span>
-                <span class="tag">CSS</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">Full Stack</span>
+            <div class="project-card" data-category="full-stack" style="--order:9">
+                <div class="project-icon" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                <h3>ch08-ex1-012</h3>
+                <p>Dự án thuộc chương 8, tập trung vào xử lý dữ liệu và giao diện động với JavaScript.</p>
+                <div class="tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Full Stack</span>
+                </div>
+                <a href="https://ch08-ex1-012.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
             </div>
-            <a href="https://ch09-ex1-dow012.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
-        </div>
-        <div class="project-card" data-category="full-stack" style="--order:11">
-            <div class="project-icon"><i class="fas fa-shopping-cart"></i></div>
-            <h3>ch09-ex2-cart-dxi6</h3>
-            <p>Ứng dụng giỏ hàng trực tuyến với các tính năng quản lý sản phẩm, sử dụng JavaScript.</p>
-            <div class="tags">
-                <span class="tag">HTML</span>
-                <span class="tag">CSS</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">Full Stack</span>
+            <div class="project-card" data-category="full-stack" style="--order:10">
+                <div class="project-icon" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                <h3>ch09-ex1-dow012</h3>
+                <p>Dự án thuộc chương 9, xây dựng ứng dụng web với giao diện và tính năng tương tác.</p>
+                <div class="tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Full Stack</span>
+                </div>
+                <a href="https://ch09-ex1-dow012.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
             </div>
-            <a href="https://ch09-ex2-cart-dxi6.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
-        </div>
-        <div class="project-card" data-category="full-stack" style="--order:12">
-            <div class="project-icon"><i class="fas fa-database"></i></div>
-            <h3>ch12-ex1-wup2</h3>
-            <p>Ứng dụng quản lý cơ sở dữ liệu với giao diện tương tác, sử dụng JavaScript để xử lý dữ liệu.</p>
-            <div class="tags">
-                <span class="tag">HTML</span>
-                <span class="tag">CSS</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">Full Stack</span>
+            <div class="project-card" data-category="full-stack" style="--order:11">
+                <div class="project-icon" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                <h3>ch09-ex2-cart-dxi6</h3>
+                <p>Ứng dụng giỏ hàng trực tuyến với các tính năng quản lý sản phẩm, sử dụng JavaScript.</p>
+                <div class="tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Full Stack</span>
+                </div>
+                <a href="https://ch09-ex2-cart-dxi6.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
             </div>
-            <a href="https://ch12-ex1-wup2.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
-        </div>
-        <div class="project-card" data-category="full-stack" style="--order:13">
-            <div class="project-icon"><i class="fas fa-database"></i></div>
-            <h3>ch13-ex1-rtya</h3>
-            <p>Ứng dụng quản lý cơ sở dữ liệu với giao diện SQL, hỗ trợ truy vấn dữ liệu bằng JavaScript.</p>
-            <div class="tags">
-                <span class="tag">HTML</span>
-                <span class="tag">CSS</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">Full Stack</span>
+            <div class="project-card" data-category="full-stack" style="--order:12">
+                <div class="project-icon" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                <h3>ch12-ex1-wup2</h3>
+                <p>Ứng dụng quản lý cơ sở dữ liệu với giao diện tương tác, sử dụng JavaScript để xử lý dữ liệu.</p>
+                <div class="tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Full Stack</span>
+                </div>
+                <a href="https://ch12-ex1-wup2.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
             </div>
-            <a href="https://ch13-ex1-rtya.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
-        </div>
-        <div class="project-card" data-category="full-stack" style="--order:14">
-            <div class="project-icon"><i class="fas fa-database"></i></div>
-            <h3>ch13-ex2-mjia</h3>
-            <p>Ứng dụng The SQL Gateway cho phép nhập và thực thi SQL statement, quản lý bảng User với các cột UserID, Email, FirstName, LastName.</p>
-            <div class="tags">
-                <span class="tag">HTML</span>
-                <span class="tag">CSS</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">Full Stack</span>
+            <div class="project-card" data-category="full-stack" style="--order:13">
+                <div class="project-icon" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                <h3>ch13-ex1-rtya</h3>
+                <p>Ứng dụng quản lý cơ sở dữ liệu với giao diện SQL, hỗ trợ truy vấn dữ liệu bằng JavaScript.</p>
+                <div class="tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Full Stack</span>
+                </div>
+                <a href="https://ch13-ex1-rtya.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
             </div>
-            <a href="https://ch13-ex2-mjia.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
+            <div class="project-card" data-category="full-stack" style="--order:14">
+                <div class="project-icon" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                <h3>ch13-ex2-mjia</h3>
+                <p>Ứng dụng quản lý cơ sở dữ liệu với giao diện SQL, hỗ trợ truy vấn dữ liệu bằng JavaScript.</p>
+                <div class="tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Full Stack</span>
+                </div>
+                <a href="https://ch13-ex2-mjia.onrender.com/" target="_blank" class="project-link">Xem dự án</a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <h1>Contact Me</h1>
@@ -852,23 +907,23 @@
             <h2>Contact Information</h2>
             <div class="contact-item">
                 <i class="fas fa-envelope"></i>
-                <span>sduy@example.com</span>
+                <span>sonduy135@gmail.com</span>
             </div>
             <div class="contact-item">
                 <i class="fas fa-phone"></i>
-                <span>+1 (555) 123-4567</span>
+                <span>0981145336</span>
             </div>
             <div class="contact-item">
-                <i class="fab fa-linkedin"></i>
-                <a href="https://linkedin.com/in/sduy" target="_blank">linkedin.com/in/sduy</a>
+                <i class="fab fa-instagram"></i>
+                <a href="https://www.instagram.com/d_sy125/" target="_blank">instagram.com/d_sy125</a>
             </div>
             <div class="contact-item">
                 <i class="fab fa-github"></i>
-                <a href="https://github.com/sduy" target="_blank">github.com/sduy</a>
+                <a href="https://github.com/sdY1125" target="_blank">github.com/sdY1125</a>
             </div>
             <div class="contact-item">
                 <i class="fas fa-map-marker-alt"></i>
-                <span>San Francisco, CA</span>
+                <span>Hồ Chí Minh City, Vietnam</span>
             </div>
         </div>
     </section>
@@ -878,14 +933,71 @@
         <h3>Sduy</h3>
         <p>Data Engineering Student & Freelancer</p>
         <div class="social-icons">
-            <a href="https://github.com/sdy1125" class="social-icon" target="_blank">🐱</a>
-            <a href="https://linkedin.com/in/sduy" class="social-icon" target="_blank">in</a>
-            <a href="mailto:sonduy135@gmail.com" class="social-icon">✉️</a>
+            <a href="https://github.com/sdY1125" class="social-icon" target="_blank">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/github.svg" alt="GitHub" style="width: 24px; height: 24px;">
+            </a>
+            <a href="https://www.instagram.com/d_sy125/" class="social-icon" target="_blank">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/instagram.svg" alt="Instagram" style="width: 24px; height: 24px;">
+            </a>
+            <a href="mailto:sonduy135@gmail.com" class="social-icon">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/envelope.svg" alt="Email" style="width: 24px; height: 24px;">
+            </a>
         </div>
         <div class="copyright">© 2025 Sduy. Made with <span class="heart">❤️</span> and lots of coffee.</div>
     </footer>
 
     <!-- Font Awesome for icons (CDN) -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                // Thêm hiệu ứng fade-in cho section khi cuộn đến
+                section.style.opacity = '0';
+                section.style.transition = 'opacity 0.5s ease-in-out';
+                setTimeout(() => {
+                    section.style.opacity = '1';
+                }, 100);
+            }
+        }
+
+        // Xử lý cuộn mượt cho các liên kết trong header
+        document.querySelectorAll('nav ul li a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const sectionId = this.getAttribute('href').substring(1);
+                scrollToSection(sectionId);
+            });
+        });
+
+        // Thêm bộ lọc dự án
+        document.querySelectorAll('.category-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const category = button.getAttribute('data-category');
+                document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                document.querySelectorAll('.project-card').forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'block';
+                        card.style.opacity = '0';
+                        setTimeout(() => {
+                            card.style.transition = 'opacity 0.5s ease-in-out';
+                            card.style.opacity = '1';
+                        }, 50);
+                    } else {
+                        card.style.opacity = '0';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 500);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
